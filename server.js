@@ -2,6 +2,8 @@
 const express = require('express')
 const app = express()
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 var database = [
   {product_id:1, name:"super jacket", brand:"northface", techspecs:{material:"polyester", sizes:["s", "l", "xl"]}},
@@ -41,6 +43,12 @@ app.get('/:productId', function (req, res) {
 
 app.put('/', function (req, res) {
     res.send('Hello World')
+})
+
+app.post('/newjacket', function (req, res) {
+  console.log("INSIDE THE POSTTTTTTTTTT REQ")
+  console.log(req.body)
+  res.send('Hello World')
 })
 
 app.delete('/', function (req, res) {
